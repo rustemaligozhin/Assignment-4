@@ -1,6 +1,7 @@
 package com.finctonrol.financialcontrol.controllers;
 
 import com.finctonrol.financialcontrol.exception.UserExistException;
+import com.finctonrol.financialcontrol.exception.UserNotFoundException;
 import com.finctonrol.financialcontrol.models.UserEntity;
 import com.finctonrol.financialcontrol.services.UserService;
 import jakarta.validation.Valid;
@@ -34,9 +35,9 @@ public class UserController {
         }catch (Exception e){
             return ResponseEntity.badRequest().body("ERROR");
         }
-
-
     }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteUser(@PathVariable Long id){

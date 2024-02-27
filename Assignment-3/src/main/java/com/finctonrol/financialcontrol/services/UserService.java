@@ -49,7 +49,18 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public UserEntity updateUser(Long id, UserEntity newUser) throws UserNotFoundException {
+        UserEntity user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
 
+        user.setUsername(newUser.getUsername());
+        user.setPassword(newUser.getPassword());
+        user.setName(newUser.getName());
+        user.setSurname(newUser.getSurname());
+        user.setEmail(newUser.getEmail());
+
+        return userRepository.save(user);
+    }
 
     public UserEntity getUserById(Long id){
         return userRepository.findById(id).orElse(null);
