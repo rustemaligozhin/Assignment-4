@@ -1,6 +1,7 @@
 package com.finctonrol.financialcontrol.services;
 
 import com.finctonrol.financialcontrol.exception.UserExistException;
+import com.finctonrol.financialcontrol.exception.UserNotFoundException;
 import com.finctonrol.financialcontrol.models.UserEntity;
 import com.finctonrol.financialcontrol.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,6 +48,8 @@ public class UserService {
         log.info("User number {} deleted", id);
         userRepository.deleteById(id);
     }
+
+
 
     public UserEntity getUserById(Long id){
         return userRepository.findById(id).orElse(null);

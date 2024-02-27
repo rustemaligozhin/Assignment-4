@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/transactions")
@@ -27,8 +29,14 @@ public class TransactionController {
 
     }
 
+    @GetMapping
+    public ResponseEntity getAllTransactions(){
+        List<TransactionEntity> transcations = transactionService.getAllTransactions();
+        return ResponseEntity.ok(transcations);
+    }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteUser(@PathVariable Long id){
+    public ResponseEntity deleteTransaction(@PathVariable Long id){
         try {
             transactionService.deleteTransaction(id);
             return ResponseEntity.ok("Transaction deleted");
