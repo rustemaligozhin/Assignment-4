@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
@@ -20,9 +22,9 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public String users(@RequestParam(name = "username", required = false) String username, Model model){
-        model.addAttribute("users", userService.listUsers(username));
-        return "users";
+    public ResponseEntity getAllUsers(){
+        List<UserEntity> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
     }
 
     @PostMapping

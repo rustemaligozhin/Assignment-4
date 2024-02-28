@@ -27,8 +27,7 @@ public class UserService {
         return userRepository.getByUsername(username);
     }
 
-    public List<UserEntity> listUsers(String username){
-        if(username != null) return userRepository.findByUsername(username);
+    public List<UserEntity> getAllUsers(){
         return userRepository.findAll();
     }
 
