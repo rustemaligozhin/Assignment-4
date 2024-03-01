@@ -9,15 +9,17 @@ import java.util.List;
 @Service
 public class BudgetService {
 
-    public List<BudgetEntity> getAllBudgets(){
-        return budgetRepository.findAll();
-    }
+
 
     @Autowired
     private BudgetRepository budgetRepository;
 
     public BudgetEntity createBudget(BudgetEntity budget){
         return budgetRepository.save(budget);
+    }
+
+    public List<BudgetEntity> getAllBudgets(){
+        return budgetRepository.findAll();
     }
 }
 
