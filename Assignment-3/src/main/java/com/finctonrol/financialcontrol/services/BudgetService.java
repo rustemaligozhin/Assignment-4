@@ -4,8 +4,15 @@ import com.finctonrol.financialcontrol.repositories.BudgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BudgetService {
+
+    public List<BudgetEntity> getAllBudgets(){
+        return budgetRepository.findAll();
+    }
+
     @Autowired
     private BudgetRepository budgetRepository;
 
@@ -13,3 +20,4 @@ public class BudgetService {
         return budgetRepository.save(budget);
     }
 }
+
