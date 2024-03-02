@@ -26,7 +26,9 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
+
     public List<TransactionEntity> getAllTransactions(){
+
         return transactionRepository.findAll();
     }
 
@@ -36,6 +38,7 @@ public class TransactionService {
     }
 
     public void deleteTransaction(Long id){
+
         transactionRepository.deleteById(id);
     }
 
